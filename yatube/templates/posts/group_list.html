@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block header %}
+  Записи сообщества {{ group.title }}
+{% endblock%}
+{% block content %}
+  <h1>{{ group.title }}</h1>
+  <h5><p>{{ group.description }}</p></h5>
+  <br>
+  {% for post in page_obj %}
+    <ul>
+      <li>
+        Автор: <a href="{% url 'posts:profile' post.author %}">{{ post.author.get_full_name }}</a>
+      </li>
+      <li>
+        Дата публикации: {{ post.created|date:"d E Y" }}
+      </li>
+    </ul>
+    {% thumbnail post.image "1000x1000" crop="center" upscale=True as im %}
+        <img class="card-img my-2" src="{{ im.url }}">
+    {% endthumbnail %}
+    <p>{{ post.text }}</p>
+    <a
+        class="btn btn-outline-dark btn-xs"
+        href={% url 'posts:post_detail' post.id %}>
+        подробная информация
+    </a>
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+  {% include 'posts/includes/paginator.html' %}
+{% endblock %}

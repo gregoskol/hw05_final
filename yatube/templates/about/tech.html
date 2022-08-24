@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}Технологии{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h1><center>Для создания этого сайта использовались:</h1>
+        <article class="col-12 col-md-6"
+          <br>
+          <a class="navbar-brand" href="https://ru.wikipedia.org/wiki/Django">
+            <center><img src="{% static 'img/tech/django.png' %}" width="180" height="180">
+          </a>
+          <br>
+          <a class="navbar-brand" href="https://ru.wikipedia.org/wiki/HTML">
+            <center><img src="{% static 'img/tech/html.png' %}" width="180" height="180">
+          </a>
+        </article>
+        <article class="col-12 col-md-6">
+          <a class="navbar-brand" href="https://ru.wikipedia.org/wiki/Python">
+            <center><img src="{% static 'img/tech/python.png' %}" width="180" height="180">
+          </a>
+          <br>
+          <a class="navbar-brand" href="https://ru.wikipedia.org/wiki/Bootstrap_(%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA)">
+            <center><img src="{% static 'img/tech/bootstrap.png' %}" width="180" height="180">
+          </a>
+        </article>
+    </div>
+  </div>
+{% endblock %} 

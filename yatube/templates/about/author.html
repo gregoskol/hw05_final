@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}Об авторе проекта{% endblock %}
+{% block content %}
+  <div class="row">
+    <aside class="col-12 col-md-3">
+      <img src="{% static 'img/avik.png' %}" width="235" height="383" class="d-inline-block align-top" alt="">
+    </aside>
+    <aside class="col-12 col-md-9">
+      <br><center><h1>Привет, меня зовут Антон!</h1><br></center><br>
+      Я ведущий инженер в компании, которая диспетчеризирует строящиеся станции московского метро. 
+      В свободное время учусь разрабатывать сайты. Этот — мой первый проект.
+    </aside>
+  </div>
+{% endblock %} 
