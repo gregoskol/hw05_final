@@ -5,8 +5,7 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_page
 
 from posts.forms import CommentForm, PostForm
-
-from .models import Follow, Group, Post, User
+from posts.models import Follow, Group, Post, User
 
 NUMBERS_OF_LIMIT = 10
 
@@ -134,13 +133,7 @@ def follow_index(request):
 @login_required
 def profile_follow(request, username):
     author = get_object_or_404(User, username=username)
-    if (
-        request.user != author
-        and not Follow.objects.filter(
-            user=request.user, author=author
-        ).exists()
-    ):
-        Follow.objects.create(user=request.user, author=author)
+    Follow.objects.create(user=request.user, author=author)
     return redirect(reverse("posts:profile", args=[username]))
 
 

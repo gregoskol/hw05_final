@@ -1,6 +1,7 @@
 from core.models import CreatedModel
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import CheckConstraint, UniqueConstraint
 
 from posts.validators import clean_post
 
@@ -63,3 +64,14 @@ class Follow(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="following"
     )
+
+    class Meta:
+        verbose_name = "Подписка"
+        verbose_name_plural = "Подписки"
+        constraints = [
+            UniqueConstraint(fields=["user", "author"], name="unique_follow"),
+            CheckConstraint(
+                check=~models.Q(user=models.F("author")),
+                name="no_follow_myself",
+            ),
+        ]

@@ -75,13 +75,7 @@ class PostFormsTest(TestCase):
                 group=form_data["group"],
             ).exists()
         )
-        self.assertTrue(
-            Post.objects.filter(
-                text=form_data["text"],
-                author=form_data["author"],
-                group=form_data["group"],
-            ).latest("created")
-        )
+        self.assertTrue(Post.objects.latest("created"))
         check_image = Post.objects.latest("created")
         self.assertEqual(check_image.image.name, "posts/small.gif")
 
