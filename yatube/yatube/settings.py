@@ -23,13 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "w&uho9v_@z=&6&dq1o529bl&rjk25)8zzll@kp=%f3m@#8p@!u"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "[::1]",
     "testserver",
+    "www.gregoskol.pythonanywhere.com",
+    "gregoskol.pythonanywhere.com",
 ]
 
 
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "about.apps.AboutConfig",
     "sorl.thumbnail",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 ROOT_URLCONF = "yatube.urls"

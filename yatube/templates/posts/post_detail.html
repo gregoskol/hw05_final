@@ -29,10 +29,10 @@
       </ul>
     </aside>
     <article class="col-12 col-md-9">
-      {% thumbnail post.image "1000x1000" crop="center" upscale=True as im %}
+      {% thumbnail post.image "1000x500" crop="center" upscale=True as im %}
         <img class="card-img my-2" src="{{ im.url }}">
       {% endthumbnail %}
-      <p>{{ post.text }}</p>
+      <p style="text-align: justify">{{ post.text }}</p>
       {% include 'posts/includes/comments.html' %}
     </article>
   </div> 
