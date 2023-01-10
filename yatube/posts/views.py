@@ -1,11 +1,18 @@
+import os
+
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.cache import cache_page
+from rest_framework import serializers, status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from posts.forms import CommentForm, PostForm
 from posts.models import Follow, Group, Post, User
+
+from .serializers import PostSerializer
 
 NUMBERS_OF_LIMIT = 10
 

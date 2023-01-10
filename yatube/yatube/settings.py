@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "w&uho9v_@z=&6&dq1o529bl&rjk25)8zzll@kp=%f3m@#8p@!u"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "sorl.thumbnail",
     "debug_toolbar",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -139,7 +140,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_URL = "/static/"
-STATIC_ROOT = ""
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "posts:index"
